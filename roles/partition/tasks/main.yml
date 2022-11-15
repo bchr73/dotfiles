@@ -1,0 +1,120 @@
+---
+# this playbook partitions the installation medium
+
+- name: Read device information
+  community.general.parted: device={{ install_drive }} unit=MiB
+  register: install_drive_info
+
+- name: Remove all partitions from disk
+  community.general.parted:
+    device: "{{ install_drive }}"
+    number: "{{ item.num }}"
+    state: absent
+  loop: "{{ install_drive_info.partitions }}"
+
+- name: Create boot partition
+  parted:
+    device: "{{ install_drive }}"
+    label: gpt
+    number: 1
+    part_start: "{{ partitions.boot.part_start }}"
+    part_end: "{{ partitions.boot.part_end }}"
+    name: boot
+    flags: [boot, esp]
+    state: present
+
+- name: Create swap partition
+  parted:
+    device: "{{ install_drive }}"
+    label: gpt
+    number: 2
+    part_start: "{{ partitions.swap.part_start }}"
+    part_end: "{{ partitions.swap.part_end }}"
+    name: swap
+    flags: [swap]
+    state: present
+
+- name: Create root partition
+  parted:
+    device: "{{ install_drive }}"
+    label: gpt
+    number: 3
+    part_start: "{{ partitions.root.part_start }}"
+    part_end: "{{ partitions.root.part_end }}"
+    name: root
+    state: present
+
+- name: Create home partition
+  parted:
+    device: "{{ install_drive }}"
+    label: gpt
+    number: 4
+    part_start: "{{ partitions.home.part_start }}"
+    part_end: "{{ partitions.home.part_end }}"
+    name: home
+    state: present
+
+- name: Enumerate created partitions
+  shell: lsblk -n -x NAME -o PATH {{ install_drive | quote }} | tail -n +2
+  register: _partitions
+  changed_when: no
+
+- name: Assign partitions to variables
+  set_fact:
+    part_boot_device_node: "{{ _partitions.stdout_lines[0] }}"
+    part_swap_device_node: "{{ _partitions.stdout_lines[1] }}"
+    part_root_device_node: "{{ _partitions.stdout_lines[2] }}"
+    part_home_device_node: "{{ _partitions.stdout_lines[3] }}"
+
+- name: Format boot partition
+  filesystem:
+    dev: "{{ part_boot_device_node }}"
+    fstype: vfat
+    force: true
+
+- name: Format swap partition
+  filesystem:
+    dev: "{{ part_swap_device_node }}"
+    fstype: swap
+    force: true
+
+- name: Format root partition
+  filesystem:
+    dev: "{{ part_root_device_node }}"
+    fstype: ext4
+    force: true
+
+- name: Format home partition
+  filesystem:
+    dev: "{{ part_home_device_node }}"
+    fstype: ext4
+    force: true
+
+- name: Mount root partition
+  mount:
+    state: mounted
+    src: "{{ part_root_device_node }}"
+    path: "/mnt"
+    fstype: ext4
+
+- name: Create /boot mountpoint
+  file:
+    state: directory
+    name: "/mnt{{ partitions.boot.location }}"
+
+- name: Mount the boot partition
+  mount:
+    state: mounted
+    src: "{{ part_boot_device_node }}"
+    path: "/mnt{{ partitions.boot.location }}"
+    fstype: vfat
+
+- name: Mount home partition
+  mount:
+    state: mounted
+    src: "{{ part_home_device_node }}"
+    path: "/mnt{{ partitions.home.location }}"
+    fstype: ext4
+
+- name: Mount swap
+  command: swapon {{ part_swap_device_node }}

@@ -1,0 +1,10 @@
+# site.yml
+
+# Apply common configuration to all hosts
+- hosts: all
+
+  roles:
+    - partition
+    - pacstrap
+    - chroot
+    - bootloader

@@ -1,0 +1,8 @@
+---
+i3_font_size: 11
+i3_exec_extra:
+  - exec udiskie &
+i3_blocks_disks:
+  - { label: "boot":, disk: "/boot" }
+  - { label: "root":, disk: "/root" }
+  - { label: "home":, disk: "/home" }

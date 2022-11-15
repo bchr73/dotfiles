@@ -1,0 +1,17 @@
+base_packages_list:
+  - base
+  - base-devel
+  - dhcpcd
+  - inetutils
+  - linux
+  - linux-firmware
+  - man-db
+  - man-pages
+  - netctl
+  - texinfo
+  - vi
+  - neovim
+  - sudo
+  - networkmanager
+  - openssh
+  - python3
