@@ -20,7 +20,7 @@ partitions:
     part_start: "12.3GiB"
     part_end: "100%"
 
-i3_font_size: 24
+i3_font_size: 8
 i3_exec_extra:
   - exec udiskie &
   - exec xscreensaver &
