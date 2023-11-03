@@ -1,12 +1,38 @@
-user_packages_list:
+pacman_packages_list:
+  - alacritty
+  - autorandr
+  - bluez
+  - bluez-utils
+  - deepin-screenshot
+  - dmenu
+  - feh
+  - firefox-developer-edition
+  - gedit
+  - git
+  - gnu-netcat
+  - gvfs
   - i3
   - i3status
+  - kubectl
   - lightdm
   - lightdm-slick-greeter
-  - alacritty
-  - firefox-developer-edition
+  - ntfs-3g
+  - pavucontrol
+  - pulseaudio
+  - pulseaudio-alsa
+  - pulseaudio-bluetooth
+  - sof-firmware
+  - sshfs
+  - sshpass
   - thunar
-  - autorandr
-  - deepin-screenshot
+  - thunar-volman
+  - tumbler
   - udiskie
+  - xdotool
+  - xorg-xrandr
+  - xprintidle
   - xscreensaver
+
+aur_packages_list:
+  - masterpdfeditor-free
+  - moolticute
