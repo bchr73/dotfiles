@@ -1,3 +1,21 @@
 ---
+
+- name: Generate new initramfs
+  command: arch-chroot /mnt mkinitcpio -P
+
 - name: Install 'systemd-boot'
-  command: bootctl install
+  command: arch-chroot /mnt bootctl install
+
+- name: Fetch PARTUUID of root partition
+  command: blkid --match-tag PARTUUID --match-token PARTLABEL=root --output value
+  register: root_partuuid
+
+- name: Copy systemd-boot loader.conf
+  template:
+    src: ../templates/loader.j2
+    dest: /mnt/boot/loader/loader.conf
+
+- name: Copy systemd-boot loader.conf
+  template:
+    src: ../templates/arch.j2
+    dest: /mnt/boot/loader/entries/arch.conf

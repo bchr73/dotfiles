@@ -6,5 +6,8 @@
   roles:
     - partition
     - pacstrap
-    - chroot
+    - system 
     - bootloader
+    - user
+    - packages
+    - config

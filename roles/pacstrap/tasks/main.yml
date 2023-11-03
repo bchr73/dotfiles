@@ -2,7 +2,7 @@
 # this playbook bootstraps arch onto the installation medium
 
 - name: Run pacstrap
-  command: pacstrap -K /mnt base base-devel linux linux-firmware
+  command: "pacstrap -K /mnt {{ base_packages_list | join(' ') }}"
   register: out
 
 - debug: var=out.stdout_lines

@@ -1,0 +1,45 @@
+---
+
+- name: Create ~/.config directory
+  file:
+    path: /mnt/home/karim/.config
+    state: directory
+
+- name: Create i3 directory
+  file:
+    path: /mnt/home/karim/.config/i3
+    state: directory
+
+- name: Copy i3 config 
+  template:
+    src: ../templates/i3/i3.j2
+    dest: /mnt/home/karim/.config/i3/config
+
+- name: Create i3blocks directory
+  file:
+    path: /mnt/home/karim/.config/i3blocks
+    state: directory
+
+- name: Copy i3blocks config 
+  template:
+    src: ../templates/i3blocks/i3blocks.j2
+    dest: /mnt/home/karim/.config/i3blocks/config
+
+- name: Copy LightDM config
+  template:
+    src: ../templates/lightdm/lightdm.j2
+    dest: /mnt/etc/lightdm/lightdm.conf
+
+- name: Copy lightdm-slick-greeter config
+  template:
+    src: ../templates/lightdm/slick-greeter.j2
+    dest: /mnt/etc/lightdm/slick-greeter.conf
+
+- name: Copy init script 
+  template:
+    src: ../templates/init/init.j2
+    dest: /mnt/home/karim/init
+    mode: 0744
+
+- name: Permission init script
+  command: arch-chroot /mnt chown karim:karim /home/karim/init

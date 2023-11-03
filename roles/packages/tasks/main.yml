@@ -1,0 +1,11 @@
+---
+# this playbook installs the desired user packages 
+
+- name: Update packages
+  command: arch-chroot /mnt pacman -Syu
+
+- name: Install packages
+  command: "arch-chroot /mnt pacman -S {{ user_packages_list | join(' ') }} --noconfirm"
+  register: packages
+
+- debug: var=packages.stdout_lines

@@ -1,0 +1,12 @@
+user_packages_list:
+  - i3
+  - i3status
+  - lightdm
+  - lightdm-slick-greeter
+  - alacritty
+  - firefox-developer-edition
+  - thunar
+  - autorandr
+  - deepin-screenshot
+  - udiskie
+  - xscreensaver

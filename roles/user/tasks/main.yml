@@ -1,0 +1,24 @@
+---
+
+- name: Allow 'wheel' group to run any command
+  lineinfile:
+    dest: /mnt/etc/sudoers
+    state: present
+    regexp: '^# %wheel ALL=(ALL:ALL) ALL'
+    line: '%wheel ALL=(ALL:ALL) ALL'
+
+- name: Require password of target user 
+  lineinfile:
+    dest: /mnt/etc/sudoers
+    state: present
+    regexp: '^# Defaults targetpw'
+    line: 'Defaults targetpw'
+
+- name: Create primary user
+  command: arch-chroot /mnt useradd -m -G wheel karim
+
+- name: Set root password
+  shell: echo 'root:root' | arch-chroot /mnt chpasswd
+
+- name: Update primary user password
+  shell: echo 'karim:karim' | arch-chroot /mnt chpasswd

@@ -1,0 +1,26 @@
+---
+# this playbook chroots into the new environment
+
+- name: Generate fstab
+  shell: genfstab -U /mnt >> /mnt/etc/fstab
+
+- name: Set timezone
+  command: ln -sf /mnt/usr/share/zoneinfo/America/Toronto /mnt/etc/localtime
+
+- name: Set hardware clock
+  command: arch-chroot /mnt hwclock --systohc
+
+- name: Set locale
+  replace:
+    path: /mnt/etc/locale.gen
+    regexp: '#{{locale}}'
+    replace: '{{locale}}'
+
+- name: Set locale
+  command: arch-chroot /mnt locale-gen
+
+- name: Generate 'locale.conf'
+  shell: echo "LANG={{ locale }}" > /etc/locale.conf
+
+- name: Set hostname
+  shell: echo {{ hostname }} > /etc/hostname

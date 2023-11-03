@@ -5,6 +5,14 @@
   community.general.parted: device={{ install_drive }} unit=MiB
   register: install_drive_info
 
+- name: Unmount /mnt directory 
+  mount:
+    state: unmounted
+    path: /mnt
+
+- name: Swapoff
+  command: swapoff -a
+
 - name: Remove all partitions from disk
   community.general.parted:
     device: "{{ install_drive }}"
