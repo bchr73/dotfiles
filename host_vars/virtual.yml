@@ -22,8 +22,10 @@ partitions:
 
 i3_font_size: 24
 i3_exec_extra:
-  - xrandr -o right
   - exec udiskie &
+  - exec xscreensaver &
+  - exec nm-applet &
+  #- exec optimus-manager-qt &
 i3blocks_disks:
   - { label: "boot", disk: "/boot" }
   - { label: "root", disk: "/root" }

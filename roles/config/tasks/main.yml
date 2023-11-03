@@ -41,5 +41,8 @@
     dest: /mnt/home/karim/init
     mode: 0744
 
+- name: Permission ~/.config 
+  command: arch-chroot /mnt chown -R karim:karim /home/karim/.config
+
 - name: Permission init script
   command: arch-chroot /mnt chown karim:karim /home/karim/init
