@@ -5,7 +5,4 @@
   command: arch-chroot /mnt pacman -Syu
 
 - name: Install packages
-  command: "arch-chroot /mnt pacman -S {{ user_packages_list | join(' ') }} --noconfirm"
-  register: packages
-
-- debug: var=packages.stdout_lines
+  command: "arch-chroot /mnt pacman -S {{ pacman_packages_list | join(' ') }} --noconfirm"
