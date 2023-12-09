@@ -1,3 +1,87 @@
 ---
 chroot: /mnt
 locale: en_US.UTF-8
+
+base_package_list:
+  - base
+  - base-devel
+  - linux
+  - linux-firmware
+  - archlinux-keyring
+  - dhcpcd
+  - inetutils
+  - intel-ucode
+  - sudo
+  - man-db
+  - man-pages
+  - netctl
+  - texinfo
+  - vi
+  - vim
+  - neovim
+  - networkmanager
+  - openssh
+  - python
+
+pacman_package_list:
+  - alacritty
+  - ansible-core
+  - autorandr
+  - bluez
+  - bluez-utils
+  - brightnessctl
+  - deepin-screen-recorder
+  - discord
+  - dmenu
+  - docker
+  - docker-buildx
+  - docker-compose
+  - feh
+  - firefox-developer-edition
+  - freecad
+  - fzf
+  - gedit
+  - git
+  - gnu-netcat
+  - gvfs
+  - gvfs-smb
+  - helm
+  - i3-wm
+  - i3blocks
+  - i3lock
+  - i3status
+  - kubectl
+  - libxcrypt-compat
+  - lightdm
+  - lightdm-slick-greeter
+  - ntfs-3g
+  - pavucontrol
+  - prusa-slicer
+  - pulseaudio
+  - pulseaudio-alsa
+  - pulseaudio-bluetooth
+  - python-pip
+  - python-virtualenv
+  - rsync
+  - sshfs
+  - sshpass
+  - thefuck
+  - thunar
+  - thunar-volman
+  - tree
+  - tumbler
+  - udiskie
+  - unzip
+  - vlc
+  - wget
+  - xdotool
+  - xorg-xrandr
+  - xprintidle
+  - xscreensaver
+  - zsh
+
+aur_package_list:
+  - ledger-live-bin
+  - masterpdfeditor-free
+  - moolticute
+  - tuir
