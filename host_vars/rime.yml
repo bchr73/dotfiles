@@ -19,9 +19,11 @@ partitions:
     part_end: "100%"
 
 i3_font_size: 24
+
 i3_exec_extra:
   - xrandr -o right
   - exec udiskie &
+
 i3_blocks_disks:
   - { label: "boot", disk: "/boot" }
   - { label: "root", disk: "/root" }
