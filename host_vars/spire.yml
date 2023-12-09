@@ -1,8 +1,38 @@
 ---
-i3_font_size: 11
+install_drive: /dev/nvme0n1
+
+partitions:
+  boot:
+    location: "/boot"
+    part_start: "1MiB"
+    part_end: "301MiB"
+  swap:
+    part_start: "301MiB"
+    part_end: "2.3GiB"
+  root:
+    location: "/"
+    part_start: "2.3GiB"
+    part_end: "12.3GiB"
+  home:
+    location: "/home"
+    part_start: "12.3GiB"
+    part_end: "100%"
+
+i3_font_size: 24
+
 i3_exec_extra:
-  - exec udiskie &
+  - udiskie &
+  - xscreensaver &
+  - moolticuted &
+  - optimus-manager-qt &
+
 i3_blocks_disks:
-  - { label: "boot":, disk: "/boot" }
-  - { label: "root":, disk: "/root" }
-  - { label: "home":, disk: "/home" }
+  - { label: "boot", disk: "/boot" }
+  - { label: "root", disk: "/" }
+  - { label: "home", disk: "/home" }
+
+host_pacman_package_list:
+  - sof-firmware
+
+host_aur_package_list:
+  - optimus-manager-qt

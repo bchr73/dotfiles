@@ -28,10 +28,9 @@ i3_exec_extra:
 
 i3_blocks_disks:
   - { label: "boot", disk: "/boot" }
-  - { label: "root", disk: "/root" }
+  - { label: "root", disk: "/" }
+  - { label: "home", disk: "/home" }
 
 host_pacman_package_list:
-  - sof-firmware
 
 host_aur_package_list:
-  - optimus-manager-qt
