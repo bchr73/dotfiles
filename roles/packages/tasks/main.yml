@@ -5,4 +5,4 @@
   command: arch-chroot /mnt pacman -Syu
 
 - name: Install packages
-  command: "arch-chroot /mnt pacman -S {{ pacman_package_list + host_pacman_package_list | join(' ') }} --noconfirm"
+  command: "arch-chroot /mnt pacman -S {{ (pacman_package_list + host_pacman_package_list|default([])) | join(' ') }} --noconfirm"

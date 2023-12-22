@@ -8,7 +8,7 @@ git clone https://aur.archlinux.org/yay.git ~/yay
 cd ~/yay && makepkg -sfi --noconfirm
 rm -rf ~/yay
 
-yay -S {{ aur_package_list + host_aur_package_list | join(' ') }} --noconfirm
+yay -S {{ (aur_package_list + host_aur_package_list|default([])) | join(' ') }} --noconfirm
 
 echo "Please update root password:\n"
 sudo passwd root
