@@ -10,6 +10,8 @@ rm -rf ~/yay
 
 yay -S {{ (aur_package_list + host_aur_package_list|default([])) | join(' ') }} --noconfirm
 
+{{ host_init_commands | join('\n') }}
+
 echo "Please update root password:\n"
 sudo passwd root
 
