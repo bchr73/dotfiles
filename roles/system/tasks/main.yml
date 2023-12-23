@@ -20,7 +20,7 @@
   command: arch-chroot /mnt locale-gen
 
 - name: Generate 'locale.conf'
-  shell: echo "LANG={{ locale }}" > /etc/locale.conf
+  shell: echo "LANG={{ locale }}" > /mnt/etc/locale.conf
 
 - name: Set hostname
-  shell: echo {{ hostname }} > /etc/hostname
+  shell: echo {{ hostname }} > /mnt/etc/hostname
