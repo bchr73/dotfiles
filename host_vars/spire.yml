@@ -24,7 +24,7 @@ kernel_params:
   - fbcon=rotate:1
   - video=DSI-1:panel_orientation=right_side_up
 
-i3_font_size: 14
+i3_font_size: 20
 
 i3_exec_extra:
   - udiskie &
