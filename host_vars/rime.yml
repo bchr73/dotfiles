@@ -32,5 +32,7 @@ i3_blocks_disks:
   - { label: "home", disk: "/home" }
 
 host_pacman_package_list:
+  - sof-firmware
 
 host_aur_package_list:
+  - optimus-manager-qt

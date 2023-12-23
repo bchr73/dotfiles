@@ -25,7 +25,7 @@ i3_exec_extra:
   - exec udiskie &
   - exec xscreensaver &
   - exec nm-applet &
-  #- exec optimus-manager-qt &
+
 i3blocks_disks:
   - { label: "boot", disk: "/boot" }
   - { label: "root", disk: "/root" }
