@@ -1,1 +1,3 @@
-virtual ansible_connection=ssh ansible_host=192.168.1.39 ansible_ssh_user=root ansible_ssh_pass=root
+#virtual ansible_connection=ssh ansible_host=192.168.1.1 ansible_ssh_user=root ansible_ssh_pass=root
+#spire ansible_connection=ssh ansible_host=192.168.1.1 ansible_ssh_user=root ansible_ssh_pass=root
+#rime ansible_connection=ssh ansible_host=192.168.1.1 ansible_ssh_user=root ansible_ssh_pass=root
