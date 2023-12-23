@@ -111,7 +111,11 @@ greeter-session=lightdm-slick-greeter
 session-wrapper=/etc/lightdm/Xsession
 #greeter-wrapper=
 #guest-wrapper=
+{% if hostname == "spire" %}
+display-setup-script=xrandr -o right
+{% else %}
 #display-setup-script=
+{% endif %}
 #display-stopped-script=
 #greeter-setup-script=
 #session-setup-script=
