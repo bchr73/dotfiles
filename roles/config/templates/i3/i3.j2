@@ -52,7 +52,7 @@ bindsym XF86AudioMute exec "pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -
 floating_modifier $mod
 
 # take a screenshot
-bindsym $mod+Shift+s exec deepin-screenshot -d 3
+bindsym $mod+Shift+s exec deepin-screen-recorder -d 3
 
 # start a terminal
 bindsym $mod+space exec alacritty
@@ -68,10 +68,7 @@ bindsym $mod+q kill
 
 # application shortcuts
 bindsym $mod2+f exec thunar
-bindsym $mod2+q exec transmission-qt
 bindsym $mod2+p exec pavucontrol
-bindsym $mod2+n exec protonmail-desktop
-bindsym $mod2+m exec thunderbird
 
 # move tiling windows via drag & drop by left-clicking into the title bar,
 # or left-clicking anywhere into the window while holding the floating modifier.
@@ -84,7 +81,7 @@ tiling_drag modifier titlebar
 # bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id dmenu_run
+bindsym $mod+d exec --no-startup-id dmenu_run -fn 'monospace-{ i3_font_size }'
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
