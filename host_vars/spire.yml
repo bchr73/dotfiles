@@ -43,4 +43,4 @@ host_pacman_package_list:
 
 host_init_commands:
   - xrandr -o right
-  - autorandr -s default#
+  - autorandr -s default
