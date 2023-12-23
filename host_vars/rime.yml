@@ -1,4 +1,6 @@
 ---
+hostname: "rime"
+
 install_drive: /dev/nvme0n1
 
 partitions:
@@ -18,6 +20,8 @@ partitions:
     part_start: "12.3GiB"
     part_end: "100%"
 
+#kernel_params:
+
 i3_font_size: 24
 
 i3_exec_extra:
@@ -36,3 +40,5 @@ host_pacman_package_list:
 
 host_aur_package_list:
   - optimus-manager-qt
+
+#host_init_commands:

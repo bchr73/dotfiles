@@ -10,15 +10,19 @@ partitions:
     part_end: "301MiB"
   swap:
     part_start: "301MiB"
-    part_end: "16.3GiB"
+    part_end: "16GiB"
   root:
     location: "/"
-    part_start: "16.3GiB"
-    part_end: "300.3GiB"
+    part_start: "16GiB"
+    part_end: "300GiB"
   home:
     location: "/home"
-    part_start: "300.3GiB"
+    part_start: "300GiB"
     part_end: "100%"
+
+kernel_params:
+  - fbcon=rotate:1
+  - video=DSI-1:panel_orientation=right_side_up
 
 i3_font_size: 22
 
@@ -34,3 +38,9 @@ i3blocks_disks:
 
 host_pacman_package_list:
   - sof-firmware
+
+#host_aur_package_list:
+
+host_init_commands:
+  - xrandr -o right
+  - autorandr -s default#

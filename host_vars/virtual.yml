@@ -20,6 +20,8 @@ partitions:
     part_start: "12.3GiB"
     part_end: "100%"
 
+#kernel_params:
+
 i3_font_size: 8
 i3_exec_extra:
   - exec udiskie &
@@ -29,3 +31,7 @@ i3_exec_extra:
 i3blocks_disks:
   - { label: "boot", disk: "/boot" }
   - { label: "root", disk: "/root" }
+
+#host_pacman_package_list:
+#host_aur_package_list:
+#host_init_commands:
