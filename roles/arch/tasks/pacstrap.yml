@@ -1,6 +1,12 @@
 ---
 # this playbook bootstraps arch onto the installation medium
 
+- name: Update package repository
+  command: "pacman -Syu --noconfirm"
+
+- name: Update archlinux-keyring
+  command: "pacman -S archlinux-keyring --noconfirm"
+
 - name: Run pacstrap
   command: "pacstrap -K /mnt {{ base_package_list | join(' ') }}"
   register: out
