@@ -3,6 +3,13 @@
 # Apply common configuration to all hosts
 - hosts: all
 
+  vars_files:
+    - group_vars/all.yml
+    - host_vars/haven.yml
+    - host_vars/rime.yml
+    - host_vars/spire.yml
+    - host_vars/virtual.yml
+
   roles:
     - partition
     - arch
