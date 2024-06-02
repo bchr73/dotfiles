@@ -1,0 +1,21 @@
+---
+
+- name: pacstrap
+  import_tasks:
+    file: pacstrap.yml
+
+- name: system
+  import_tasks:
+    file: system.yml
+
+- name: bootloader
+  import_tasks:
+    file: bootloader.yml
+
+- name: user
+  import_tasks:
+    file: user.yml
+
+- name: packages
+  import_tasks:
+    file: packages.yml
