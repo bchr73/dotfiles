@@ -35,6 +35,11 @@
     src: ../templates/lightdm/slick-greeter.j2
     dest: /mnt/etc/lightdm/slick-greeter.conf
 
+- name: Copy keyboard config
+  template:
+    src: ../templates/keyboard/00-keyboard.conf.j2
+    dest: /etc/X11/xorg.conf.d/00-keyboard.conf
+
 - name: Copy init script 
   template:
     src: ../templates/init/init.j2
